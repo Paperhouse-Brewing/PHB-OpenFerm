@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>PHB Fermenter Runtime</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>PHB Fermenter Runtime - Live</h1>
+
+  <div class="toolbar">
+      <div>
+          <button class="btn" id="btnLockdown">Lock</button>
+          <span class="small" id="lockStatus"></span>
+      </div>
+    <div>
+      <span class="small" id="labelUnits">Units</span>:
+      <button class="btn" id="btnC">°C</button>
+      <button class="btn" id="btnF">°F</button>
+    </div>
+    <div>
+      <span class="small" id="labelLang">Language</span>:
+      <select id="selLocale">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </div>
+  
+  <section class="card" style="margin-top:1rem">
+  <h2>Profiles</h2>
+  <div style="display:flex; gap:.5rem; align-items:center; flex-wrap:wrap">
+    <label for="selFVMain" style="min-width:5rem">FV</label>
+    <select id="selFVMain"></select>
+
+    <label for="selProfile" style="min-width:5rem">Profile</label>
+    <select id="selProfile"></select>
+
+    <button class="btn" id="btnAssignTop">Assign</button>
+    <button class="btn" id="btnPauseResumeTop">Pause/Resume</button>
+    <button class="btn btn-secondary" id="btnStopTop">Stop</button>
+
+    <span id="activeProfileLabelTop" style="margin-left:.5rem; opacity:.8"></span>
+  </div>
+
+      <div class="row" style="gap:.5rem; align-items:center;">
+          <button class="btn" id="btnModeValveClear">Clear Override</button>
+          <button class="btn" id="btnModeValve">Manual</button>
+          <input id="overrideMin" type="number" min="1" step="1" value="10" style="width:6rem">
+          <button class="btn" id="btnOverride">Override (min)</button>
+          <button class="btn btn-secondary" id="btnClearOverride">Clear</button>
+          <span id="modeBadge" class="muted small"></span>
+      </div>
+
+  </section>
+
+
+  <section>
+    <h2 id="hdrFermenters">Fermenters</h2>
+    <table id="tbl">
+      <thead>
+        <tr>
+            <th id="colID">ID</th>
+            <th id="colName">Name</th>
+            <th id="colBeer">Beer</th>
+            <th id="colTarget">Target</th>
+            <th id="colValve">Valve</th>
+            <th id="colSet">Set Target</th>
+            <th id="colMode">Mode</th>
+            <th id="colAge">Age</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2 id="hdrAlarms">Alarms</h2>
+    <ul id="alarms"></ul>
+  </section>
+  
+  <section>
+  <h2 id="hdrHistory">History</h2>
+  <div class="toolbar">
+    <label>
+      <span class="small">Fermenter</span>:
+      <select id="selFV"></select>
+    </label>
+    <label>
+      <span class="small">Range</span>:
+      <select id="selRange">
+        <option value="2h">Last 2h</option>
+        <option value="6h" selected>Last 6h</option>
+        <option value="12h">Last 12h</option>
+        <option value="24h">Last 24h</option>
+      </select>
+    </label>
+  </div>
+  <canvas id="chart" width="900" height="280"></canvas>
+</section>
+
+<section>
+  <h2 id="hdrProfiles">Profiles</h2>
+
+  <div class="profiles">
+    <div class="profiles-left">
+      <h3 id="hdrProfilesList">Saved Profiles</h3>
+      <ul id="profilesList" class="list"></ul>
+
+      <div class="row">
+        <button id="btnAssign" class="btn">Assign to selected FV</button>
+        <button id="btnCancelProfile" class="btn btn-secondary">Cancel active</button>
+      </div>
+
+      <div id="activeProfileBox" class="muted small" style="margin-top:.5rem;">
+        <span id="lblActiveProfile">Active Profile:</span>
+        <span id="activeProfileText">None</span>
+      </div>
+    </div>
+
+    <div class="profiles-right">
+      <h3 id="hdrCreateProfile">Create Profile</h3>
+      <label>
+        <span id="lblProfName" class="small">Name</span>
+        <input id="profName" type="text" placeholder="e.g. Ale standard">
+      </label>
+
+      <table id="stepsTable" class="table" style="margin-top:.5rem;">
+        <thead>
+          <tr>
+            <th id="thStepType">Type</th>
+            <th id="thTarget">Target</th>
+            <th id="thDuration">Duration</th>
+            <th id="thRate">Rate (°/h)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="stepsBody"></tbody>
+      </table>
+
+      <div class="row">
+        <button id="btnAddStep" class="btn">Add step</button>
+        <button id="btnSaveProfile" class="btn">Save profile</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="card" style="margin-top:1rem">
+      <h2>Controller Settings</h2>
+      <div class="row">
+          <label>Band (°C) <input id="setBandC" type="number" step="0.1"></label>
+          <label>Min change (s) <input id="setMinChangeS" type="number" step="1" min="0"></label>
+          <label>Max open (0=unlimited) <input id="setMaxOpen" type="number" step="1" min="0"></label>
+          <button class="btn" id="btnSaveSettings">Save</button>
+      </div>
+  </section>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

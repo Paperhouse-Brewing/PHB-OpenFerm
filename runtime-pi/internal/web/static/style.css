@@ -1,0 +1,11 @@
+body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:2rem}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid #ccc;padding:.5rem;text-align:left}
+.badge{display:inline-block;padding:.15rem .4rem;border-radius:.3rem;background:#eee}
+.valve-open{color:#0a0}.valve-closed{color:#a00}
+.toolbar{display:flex;gap:1rem;align-items:center;margin:.5rem 0 1rem 0}
+.btn{border:1px solid #ccc;background:#f8f8f8;padding:.3rem .6rem;border-radius:.3rem;cursor:pointer}
+.btn.active{background:#333;color:#fff}
+select{padding:.3rem .4rem}
+.small{font-size:.9rem;color:#666}
+input[type=number]{width:6rem}

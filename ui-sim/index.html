@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PHB — UI Simulator</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <header>
+    <h1 id="title">PHB — UI Simulator</h1>
+    <div>
+      <button id="toggleUnit">Toggle C/°F</button>
+      <span id="unitLabel">Unit: °C</span>
+      <select id="localePicker" title="Locale">
+        <option value="en-US">English</option>
+        <option value="es-ES">Español</option>
+      </select>
+    </div>
+  </header>
+  <p id="liveHint">Static prototype only (no backend).</p>
+  <main>
+    <section class="grid">
+      <div class="card">
+        <h2>Fermenters</h2>
+        <table class="table" id="fv-table">
+          <thead>
+            <tr>
+              <th><span id="thId">ID</span></th>
+              <th><span id="thName">Name</span></th>
+              <th><span id="thBeer">Beer</span></th>
+              <th><span id="thTarget">Target</span></th>
+              <th><span id="thValve">Valve</span></th>
+              <th>Stage</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="fv-rows"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Active Profile</h2>
+        <div id="profile"><div class="timeline" id="timeline"></div><div class="legend" id="legend"></div></div>
+      </div>
+      <div class="card">
+        <h2>Live Trend</h2>
+        <canvas id="spark" width="800" height="160"></canvas>
+      </div>
+      <div class="card">
+        <h2>Alarms</h2>
+        <ul id="alarms" class="alarms"></ul>
+      </div>
+    </section>
+  </main>
+  <footer><small>Prototype only.</small></footer>
+  <script src="./app.js"></script>
+</body>
+</html>

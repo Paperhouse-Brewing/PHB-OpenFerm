@@ -1,0 +1,16 @@
+[Unit]
+Description=PHB Fermenter Runtime
+After=network-online.target
+RequiresMountsFor=/var/lib/phb
+
+[Service]
+User=pi
+WorkingDirectory=/var/lib/phb
+ExecStart=/var/lib/phb/bin/phb-fermenter
+Environment=GOMEMLIMIT=256MiB
+Restart=always
+RestartSec=2
+WatchdogSec=15
+
+[Install]
+WantedBy=multi-user.target

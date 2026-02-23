@@ -1,0 +1,1 @@
+FQBN=arduino:avr:mega PORT=/dev/ttyACM0 phb-flash-arduino

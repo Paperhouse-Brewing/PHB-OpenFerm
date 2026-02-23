@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="02a88528-8d27-463f-9d3b-5f5ec55627c7" name="PHB-Fermenter-RPi">
+        <fileTransfer accessType="SFTP" host="192.168.1.142" port="22" sshConfigId="71dcf29d-33f1-4a59-a370-99b763746ba6" sshConfig="phbbrewery@192.168.1.142:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

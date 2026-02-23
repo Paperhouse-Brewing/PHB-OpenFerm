@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>PHB Fermenter Runtime</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>PHB Fermenter Runtime</h1>
+
+  <div class="toolbar">
+    <div>
+      <span class="small" id="labelUnits">Units</span>:
+      <button class="btn" id="btnC">°C</button>
+      <button class="btn" id="btnF">°F</button>
+    </div>
+    <div>
+      <span class="small" id="labelLang">Language</span>:
+      <select id="selLocale">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </div>
+
+  <section>
+    <h2 id="hdrFermenters">Fermenters</h2>
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th id="colID">ID</th>
+          <th id="colName">Name</th>
+          <th id="colBeer">Beer</th>
+          <th id="colTarget">Target</th>
+          <th id="colValve">Valve</th>
+          <th id="colSet">Set Target</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2 id="hdrAlarms">Alarms</h2>
+    <ul id="alarms"></ul>
+  </section>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
