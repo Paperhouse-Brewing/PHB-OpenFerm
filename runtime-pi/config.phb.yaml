@@ -1,0 +1,32 @@
+# PHB Fermenter Runtime Configuration
+# Describes your physical system. Safe to commit to version control.
+# Secrets (PIN, session timeout) belong in the systemd override — see
+# /etc/systemd/system/phb-fermenter.service.d/override.conf
+
+http:
+  addr: ":8080"
+
+serial:
+  device: "/dev/ttyACM0"
+  baud: 115200
+
+fermenters:
+  - id: "fv1"
+    name: "SS BrewBucket 1"
+    target_c: 18.0
+  - id: "fv2"
+    name: "SS BrewBucket 2"
+    target_c: 18.0
+  - id: "fv3"
+    name: "SS Unitank 1"
+    target_c: 18.0
+
+control:
+  band_c: 0.5           # hysteresis band in °C (valve opens if beer > target + band)
+  min_change_s: 60      # minimum seconds between valve state changes
+  max_open_valves: 0    # max simultaneous open valves; 0 = unlimited
+
+alarms:
+  high_margin_c: 1.5    # alarm if beer > target + this value
+  low_margin_c: 1.5     # alarm if beer < target - this value
+  debounce_s: 30        # seconds condition must persist before alarm opens or clears
